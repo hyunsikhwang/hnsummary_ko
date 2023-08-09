@@ -36,4 +36,6 @@ collection = m_db_init(coll)
 hnsummary = pd.DataFrame(list(collection.find()))
 # hnsummary.drop(['_id'], axis='columns', inplace=True)
 
-st.dataframe(hnsummary.sort_values('_id', ascending=False))
+df_hn = hnsummary.sort_values('_id', ascending=False)[['Subject', 'Content']]
+
+st.dataframe(df_hn)
