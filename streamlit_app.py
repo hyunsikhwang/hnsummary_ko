@@ -38,4 +38,6 @@ hnsummary = pd.DataFrame(list(collection.find()))
 
 df_hn = hnsummary.sort_values('_id', ascending=False)[['Subject', 'Content']]
 
-st.dataframe(df_hn)
+st.dataframe(df_hn,
+             use_container_width=True,
+             hide_index=True)
