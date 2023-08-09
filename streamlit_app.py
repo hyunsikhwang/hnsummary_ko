@@ -50,7 +50,7 @@ gb.configure_selection(selection_mode="single", use_checkbox=True)
 gb.configure_side_bar()
 gridOptions = gb.build()
 
-data = AgGrid(hnsummary,
+data = AgGrid(df_hn,
               gridOptions=gridOptions,
               enable_enterprise_modules=True,
               allow_unsafe_jscode=True,
@@ -60,7 +60,7 @@ data = AgGrid(hnsummary,
 selected_rows = data["selected_rows"]
 
 if len(selected_rows) != 0:
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
 
     with col1:
         st.markdown("##### Subject")
@@ -68,6 +68,3 @@ if len(selected_rows) != 0:
     with col2:
         st.markdown("##### Content")
         st.markdown(f":orange[{selected_rows[0]['Content']}]")
-    with col2:
-        st.markdown("##### URL")
-        st.markdown(f":orange[{selected_rows[0]['URL']}]")
