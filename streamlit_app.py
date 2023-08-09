@@ -20,6 +20,12 @@ def m_db_init(coll):
 
     return collection
 
+st.set_page_config(
+    page_title="Hacker News Summary",
+    page_icon="random",
+    layout="wide",
+    initial_sidebar_state="expanded"
+    )
 
 st.title("Hacker News Summary (Korean)")
 
@@ -30,4 +36,4 @@ collection = m_db_init(coll)
 hnsummary = pd.DataFrame(list(collection.find()))
 # hnsummary.drop(['_id'], axis='columns', inplace=True)
 
-st.write(hnsummary.sort_values('_id', ascending=False))
+st.dataframe(hnsummary.sort_values('_id', ascending=False))
