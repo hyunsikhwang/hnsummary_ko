@@ -64,9 +64,10 @@ data = AgGrid(df_hn,
 selected_rows = data["selected_rows"]
 
 if len(selected_rows) != 0:
-    st.markdown("##### Subject")
-    st.markdown(f":orange[{selected_rows[0]['Subject']}]")
-    st.markdown("##### Content")
     contents = f":orange[{selected_rows[0]['Content']}]"
     content = contents.splitlines()
-    st.markdown(content)
+    st.markdown("##### Subject")
+    st.markdown(content[0])
+    # st.markdown(f":orange[{selected_rows[0]['Subject']}]")
+    st.markdown("##### Content")
+    st.markdown(content[1])
