@@ -61,6 +61,9 @@ data = AgGrid(df_hn,
               custom_css={"#gridToolBar": {"padding-bottom": "0px !important"}}, 
               )
 
+if st.button("Re-run"):
+    st.experimental_rerun()
+
 selected_rows = data["selected_rows"]
 
 if len(selected_rows) != 0:
