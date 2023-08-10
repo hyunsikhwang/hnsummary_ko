@@ -75,4 +75,4 @@ if len(selected_rows) != 0:
     st.markdown(f":orange[{content[1]}]")
 
     st.markdown("##### URL")
-    st.markdown(f'<a href="{url}" target="_blank">{url}</a>')
+    st.markdown(f'<a href="{url}" target="_blank">{url}</a>', unsafe_allow_html=True)
