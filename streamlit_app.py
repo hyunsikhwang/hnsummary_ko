@@ -67,4 +67,6 @@ if len(selected_rows) != 0:
     st.markdown("##### Subject")
     st.markdown(f":orange[{selected_rows[0]['Subject']}]")
     st.markdown("##### Content")
-    st.write(f":orange[{selected_rows[0]['Content']}]")
+    content = f":orange[{selected_rows[0]['Content']}]"
+    content = "\".join(content.split("\n")
+    st.markdown(content)
