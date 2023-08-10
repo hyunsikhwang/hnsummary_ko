@@ -37,7 +37,7 @@ collection = m_db_init(coll)
 hnsummary = pd.DataFrame(list(collection.find()))
 # hnsummary.drop(['_id'], axis='columns', inplace=True)
 
-df_hn = hnsummary.sort_values('_id', ascending=False)[['Subject', 'Content']]
+df_hn = hnsummary.sort_values('_id', ascending=False)[['Content']]
 
 # st.dataframe(df_hn,
 #              use_container_width=True,
@@ -46,7 +46,7 @@ df_hn = hnsummary.sort_values('_id', ascending=False)[['Subject', 'Content']]
 
 gb = GridOptionsBuilder.from_dataframe(df_hn)
 # configure selection
-gb.configure_selection(selection_mode="single", use_checkbox=True)
+gb.configure_selection(selection_mode="single", use_checkbox=False)
 gb.configure_pagination(enabled=True, paginationPageSize=5)
 gb.configure_side_bar()
 gridOptions = gb.build()
