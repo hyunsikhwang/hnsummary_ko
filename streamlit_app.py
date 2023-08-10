@@ -47,6 +47,7 @@ st.dataframe(df_hn,
 gb = GridOptionsBuilder.from_dataframe(df_hn)
 # configure selection
 gb.configure_selection(selection_mode="single", use_checkbox=True)
+gb.configure_pagination(enabled=True, paginationAutoPageSize=True, paginationPageSize=10)
 gb.configure_side_bar()
 gridOptions = gb.build()
 
@@ -55,7 +56,9 @@ data = AgGrid(df_hn,
               enable_enterprise_modules=True,
               allow_unsafe_jscode=True,
               update_mode=GridUpdateMode.SELECTION_CHANGED,
-              columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS)
+              columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS,
+              custom_css={"#gridToolBar": {"padding-bottom": "0px !important"}}
+              )
 
 selected_rows = data["selected_rows"]
 
