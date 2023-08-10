@@ -47,7 +47,7 @@ st.dataframe(df_hn,
 gb = GridOptionsBuilder.from_dataframe(df_hn)
 # configure selection
 gb.configure_selection(selection_mode="single", use_checkbox=True)
-gb.configure_pagination(enabled=True, paginationAutoPageSize=True, paginationPageSize=10)
+gb.configure_pagination(enabled=True, paginationPageSize=10)
 gb.configure_side_bar()
 gridOptions = gb.build()
 
