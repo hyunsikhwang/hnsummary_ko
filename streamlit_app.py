@@ -37,7 +37,7 @@ collection = m_db_init(coll)
 hnsummary = pd.DataFrame(list(collection.find()))
 # hnsummary.drop(['_id'], axis='columns', inplace=True)
 
-df_hn = hnsummary.sort_values('_id', ascending=False)[['Content']]
+df_hn = hnsummary.sort_values('_id', ascending=False)[['Content', 'URL']
 
 # st.dataframe(df_hn,
 #              use_container_width=True,
@@ -66,8 +66,13 @@ selected_rows = data["selected_rows"]
 if len(selected_rows) != 0:
     contents = selected_rows[0]['Content']
     content = contents.splitlines()
+    url = selected_rows[2]
+
     st.markdown("##### Subject")
     st.markdown(f":orange[{content[0]}]")
     # st.markdown(f":orange[{selected_rows[0]['Subject']}]")
     st.markdown("##### Content")
     st.markdown(f":orange[{content[1]}]")
+
+    st.markdown("##### URL")
+    st.markdown(f'[{url}]({url}){:target="_blank"}')
