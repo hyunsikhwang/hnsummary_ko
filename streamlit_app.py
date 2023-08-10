@@ -39,9 +39,9 @@ hnsummary = pd.DataFrame(list(collection.find()))
 
 df_hn = hnsummary.sort_values('_id', ascending=False)[['Subject', 'Content']]
 
-st.dataframe(df_hn,
-             use_container_width=True,
-             hide_index=True)
+# st.dataframe(df_hn,
+#              use_container_width=True,
+#              hide_index=True)
 
 
 gb = GridOptionsBuilder.from_dataframe(df_hn)
@@ -57,7 +57,7 @@ data = AgGrid(df_hn,
               enable_enterprise_modules=True,
               allow_unsafe_jscode=True,
               update_mode=GridUpdateMode.SELECTION_CHANGED,
-              columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS,
+            #   columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS,
               custom_css={"#gridToolBar": {"padding-bottom": "0px !important"}}, 
               )
 
