@@ -66,7 +66,7 @@ selected_rows = data["selected_rows"]
 if len(selected_rows) != 0:
     contents = selected_rows[0]['Content']
     content = contents.splitlines()
-    url = selected_rows[1]
+    url = selected_rows[0]['URL']
 
     st.markdown("##### Subject")
     st.markdown(f":orange[{content[0]}]")
