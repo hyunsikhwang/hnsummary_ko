@@ -42,7 +42,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
     )
 
-st.title("Hacker News Summary (Korean)")
+st.title("한국말로 읽고 듣는 Hacker News")
 
 coll = 'hnsummary'
 
