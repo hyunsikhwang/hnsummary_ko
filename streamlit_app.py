@@ -97,7 +97,7 @@ async def amain(TEXT_inp) -> None:
 
     audio_file = open(OUTPUT_FILE,'rb')
     audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/ogg')
+    # st.audio(audio_bytes, format='audio/ogg')
 
     autoplay_audio(audio_bytes)
 
