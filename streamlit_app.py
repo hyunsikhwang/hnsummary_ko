@@ -4,6 +4,8 @@ import requests
 import pandas as pd
 from pymongo import MongoClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, ColumnsAutoSizeMode
+import edge_tts
+import asyncio
 
 
 def m_db_init(coll):
@@ -61,10 +63,35 @@ data = AgGrid(df_hn,
               custom_css={"#gridToolBar": {"padding-bottom": "0px !important"}}, 
               )
 
+
+VOICE = "ko-KR-SunHiNeural"
+OUTPUT_FILE = "test.mp3"
+
+VOICE_dict = {"male": "ko-KR-InJoonNeural",
+              "female": "ko-KR-SunHiNeural"}
+
+
+async def create_tts(TEXT_inp, gender) -> None:
+
+    communicate = edge_tts.Communicate(TEXT_inp, VOICE_dict[gender])
+    await communicate.save(OUTPUT_FILE)
+
+
+async def amain(TEXT_inp) -> None:
+
+    gender = "female"
+
+    await create_tts(TEXT_inp, gender)
+
+    audio_file = open(OUTPUT_FILE,'rb')
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format='audio/ogg')
+
+selected_rows = data["selected_rows"]
+
 if st.button("Re-run"):
     st.experimental_rerun()
 
-selected_rows = data["selected_rows"]
 
 if len(selected_rows) != 0:
     contents = selected_rows[0]['Content']
@@ -79,3 +106,6 @@ if len(selected_rows) != 0:
 
     st.markdown("##### URL")
     st.markdown(f'<a href="{url}" target="_blank">{url}</a>', unsafe_allow_html=True)
+
+if st.button("Text-to-Speech"):
+    asyncio.run(amain(contents))

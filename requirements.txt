@@ -6,3 +6,5 @@ lxml
 numpy
 pymongo
 streamlit-aggrid
+edge_tts
+asyncio
