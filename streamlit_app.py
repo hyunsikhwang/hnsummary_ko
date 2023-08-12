@@ -107,5 +107,5 @@ if len(selected_rows) != 0:
     st.markdown("##### URL")
     st.markdown(f'<a href="{url}" target="_blank">{url}</a>', unsafe_allow_html=True)
 
-if st.button("Text-to-Speech"):
-    asyncio.run(amain(contents))
+    if st.button("Text-to-Speech"):
+        asyncio.run(amain(contents))
