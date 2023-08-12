@@ -6,7 +6,7 @@ from pymongo import MongoClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, ColumnsAutoSizeMode
 import edge_tts
 import asyncio
-
+import base64
 
 def m_db_init(coll):
 
@@ -22,6 +22,18 @@ def m_db_init(coll):
     collection = db[coll]
 
     return collection
+
+def autoplay_audio(data: str):
+    b64 = base64.b64encode(data).decode()
+    md = f"""
+        <audio controls autoplay="true">
+        <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+        </audio>
+        """
+    st.markdown(
+        md,
+        unsafe_allow_html=True,
+    )
 
 st.set_page_config(
     page_title="Hacker News Summary",
@@ -87,10 +99,13 @@ async def amain(TEXT_inp) -> None:
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/ogg')
 
+    autoplay_audio(audio_bytes)
+
 selected_rows = data["selected_rows"]
 
 if st.button("Re-run"):
     st.experimental_rerun()
+
 
 
 if len(selected_rows) != 0:

@@ -8,3 +8,4 @@ pymongo
 streamlit-aggrid
 edge_tts
 asyncio
+base64
