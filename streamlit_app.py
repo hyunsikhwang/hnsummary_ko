@@ -54,7 +54,7 @@ def Reduce_whitespace():
         unsafe_allow_html=True,
     )
 
-Reduce_whitespace()
+# Reduce_whitespace()
 
 st.title("한국말로 읽고 듣는 Hacker News")
 
