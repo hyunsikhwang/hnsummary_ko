@@ -43,16 +43,16 @@ st.set_page_config(
     )
 
 def Reduce_whitespace():
-    st.markdown("""
+    padding_top = 0
+
+    st.markdown(f"""
         <style>
-               .block-container {
-                    padding-top: 1rem;
-                    padding-bottom: 0rem;
-                    padding-left: 5rem;
-                    padding-right: 5rem;
-                }
-        </style>
-        """, unsafe_allow_html=True)
+            .reportview-container .main .block-container{{
+                padding-top: {padding_top}rem;
+            }}
+        </style>""",
+        unsafe_allow_html=True,
+    )
 
 Reduce_whitespace()
 
