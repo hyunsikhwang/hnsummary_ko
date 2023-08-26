@@ -59,7 +59,7 @@ def Reduce_whitespace():
 
 Reduce_whitespace()
 
-st.title("한국말로 읽고 듣는 Hacker News")
+st.title("Hacker News 한국어")
 
 coll = 'hnsummary'
 
