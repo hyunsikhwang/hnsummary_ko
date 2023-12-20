@@ -67,7 +67,7 @@ collection = m_db_init(coll)
 
 hnsummary = pd.DataFrame(list(collection.find().limit(200)))
 # hnsummary.drop(['_id'], axis='columns', inplace=True)
-
+st.write(hnsummary)
 df_hn = hnsummary.sort_values('_id', ascending=False)[['Content', 'URL']]
 
 # st.dataframe(df_hn,
